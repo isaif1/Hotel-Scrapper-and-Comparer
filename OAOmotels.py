@@ -72,6 +72,6 @@ def crawl_sitemap(url, max_errors=1):
 	for i in output_rows:
 		csv_writer.writerow(i)
 	f.close()
-		# success - can scrape the result
+		# success - can scrape the resul
 crawl_sitemap("https://www.oyorooms.com/hotels-in-bangalore/?page=")
 
