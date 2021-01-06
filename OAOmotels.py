@@ -4,7 +4,6 @@ import urllib.request
 from urllib.error import URLError, HTTPError, ContentTooShortError
 from bs4 import BeautifulSoup
 import math
-import pandas as pd
 #first we need to download the web pages there may be some error occure then we need to retry as many times we want
 from xml.etree.ElementTree import fromstring
 output_rows = []
