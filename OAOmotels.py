@@ -7,6 +7,7 @@ import math
 #first we need to download the web pages there may be some error occure then we need to retry as many times we want
 from xml.etree.ElementTree import fromstring
 output_rows = []
+
 def download(url, user_agent='wswp', num_retries=2, charset='utf-8'):  #adding agent wswp defualt was Python-urllib/3.x
 	print('Downloading:', url)
 	request = urllib.request.Request(url)
@@ -23,13 +24,12 @@ def download(url, user_agent='wswp', num_retries=2, charset='utf-8'):  #adding a
 		if(num_retries>0):
 			if hasattr(e, 'code') and 500 <= e.code < 600:
 				download(url,num_retries-1)     # recursively retry 5xx HTTP errors
-
 	return html
 
 def scrapdata(html):
 	soup = BeautifulSoup(html, features="html.parser")
 	# locate the area row
-	# tr = soup.find(attrs={'class':'oyo-row oyo-row--no-spacing ListingHotelCardWrapper'})  #class="oyo-row oyo-row--no-spacing ListingHotelCardWrapper"
+	# tr = soup.find(attrs={'class':'oyo-row oyo-row--no-spacing ListingHotelCardWrapper'})  #class="oyo- rowoyo-row--no-spacing ListingHotelCardWrapper"
 	content = soup.find_all(attrs={'class': 'oyo-cell--12-col oyo-cell--8-col-tablet oyo-cell--4-col-phone'})  # class="oyo-cell--12-col oyo-cell--8-col-tablet oyo-cell--4-col-phone"
 	# getting information from a single page now and printing that.
 	for cont in content:
